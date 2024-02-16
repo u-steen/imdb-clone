@@ -40,6 +40,10 @@ With this project I am looking in creating an improved version of the IMDb UI. I
 - [ ] Frontend
 
   - [ ] NavBar
+    - [ ] Basic layout
+    - [ ] Mega Menu
+    - [ ] Search bar + filters
+    - [ ] Navbar showing on scroll-up - NOT on original IMDb
   - [ ] Main Page
     - [ ] HeroBox
     - [ ] What to watch + other lists
