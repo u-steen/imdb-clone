@@ -2,14 +2,7 @@ import { FaUserCircle } from "react-icons/fa";
 import PropTypes from "prop-types";
 import { FaCaretDown, FaCaretUp } from "react-icons/fa6";
 import { useState } from "react";
-
-export const DropdownItem = ({ name }) => {
-  return (
-    <div className="block p-4 hover:bg-zinc-200/10 active:bg-zinc-200/20">
-      <div className="text-md text-gray-200">{name}</div>
-    </div>
-  );
-};
+import DropdownItem from "./DropdownItem";
 
 const ProfileNavButton = ({ username }) => {
   const [isOpened, setIsOpened] = useState(false);
@@ -32,13 +25,15 @@ const ProfileNavButton = ({ username }) => {
       </button>
       {/* Dropdown */}
       {isOpened && (
-        <div className="absolute right-0 top-[3.2rem] z-20 w-40 rounded-md bg-zinc-800 py-2">
-          <DropdownItem name={"Your Activity"} />
+        <div className="absolute right-0 top-[3.2rem] z-20 w-48 rounded-md bg-zinc-800 py-2">
+          <DropdownItem name={"Join IMDb Pro"} />
+          <DropdownItem name={"Language: EN"} />
+          <DropdownItem name={"Your Activity"} delimiter={true} />
           <DropdownItem name={"Your Watchlist"} />
           <DropdownItem name={"Your Ratings"} />
           <DropdownItem name={"Your Lists"} />
           <DropdownItem name={"Account Settings"} />
-          <DropdownItem name={"Sign out"} />
+          <DropdownItem name={"Sign out"} delimiter={true} />
         </div>
       )}
     </>
