@@ -7,7 +7,7 @@ import ProfileNavButton from "./ProfileNavButton";
 const Navbar = () => {
   return (
     <>
-      <div className="bg-custom-black top-0  z-10 w-full">
+      <div className="bg-custom-darkgray top-0  z-10 w-full">
         <div className="mx-auto flex h-14 w-full md:w-[750px] lg:w-[1000px] xl:w-[1200px]">
           {/* LOGO */}
           <div className="flex h-full w-24 items-center justify-center text-2xl font-extrabold">
