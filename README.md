@@ -35,12 +35,20 @@ With this project I am looking in creating an improved version of the IMDb UI. I
   - DataBases
 - Create a strong portfolio piece
 
+# Changed from the original IMDb
+
+- Moved the IMDb Pro button from the Navbar to Profile
+- Created an options button on the Navbar for:
+  - Language
+  - Light / Dark Mode
+- Moved the Language selector to the User Dropdown
+
 # TO DO
 
 - [ ] Frontend
 
   - [ ] NavBar
-    - [ ] Basic layout
+    - [x] Basic layout
     - [ ] Mega Menu
     - [ ] Search bar + filters
     - [ ] Navbar showing on scroll-up - NOT on original IMDb

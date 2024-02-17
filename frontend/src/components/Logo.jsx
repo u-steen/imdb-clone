@@ -1,18 +1,17 @@
-import React from "react";
+import PropTypes from "prop-types";
 
-const Logo = () => {
+const Logo = ({ className }) => {
   return (
     <svg
       id="home_img"
-      className="ipc-logo"
       xmlns="http://www.w3.org/2000/svg"
+      className={className}
       width="64"
       height="32"
       viewBox="0 0 64 32"
       version="1.1"
     >
-      {/* <g fill="#F5C518"> */}
-      <g fill="#7350d3">
+      <g fillRule="nonzero">
         <rect x="0" y="0" width="100%" height="100%" rx="4"></rect>
       </g>
       <g
@@ -29,4 +28,7 @@ const Logo = () => {
   );
 };
 
+Logo.propTypes = {
+  className: PropTypes.string,
+};
 export default Logo;

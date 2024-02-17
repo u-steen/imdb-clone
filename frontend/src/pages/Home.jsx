@@ -1,9 +1,9 @@
 const Home = () => {
   return (
     <>
-      <div className="bg-lime-500 min-h-96">Home</div>
-      <div className="bg-lime-500 min-h-96">Home</div>
-      <div className="bg-lime-500 min-h-96">Home</div>
+      <div className="min-h-96 bg-gray-800">Home</div>
+      <div className="min-h-96 bg-lime-950">Home</div>
+      <div className="min-h-96 bg-lime-900">Home</div>
     </>
   );
 };
