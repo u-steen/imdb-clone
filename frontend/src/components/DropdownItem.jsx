@@ -34,4 +34,9 @@ DropdownItem.propTypes = {
   handleClick: PropTypes.func,
 };
 
+DropdownItem.defaultProps = {
+  delimiter: false,
+  handleClick: () => {},
+};
+
 export default DropdownItem;

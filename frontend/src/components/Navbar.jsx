@@ -22,7 +22,6 @@ const Navbar = () => {
   };
 
   const handleFilterClick = (newName) => {
-    console.log("PULA");
     setFilter(newName);
   };
   return (
