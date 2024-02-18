@@ -15,13 +15,19 @@ import { AiOutlineFileSearch } from "react-icons/ai";
 
 const Navbar = () => {
   const [isFilterOpened, setIsFilterOpened] = useState(false);
+  const [filter, setFilter] = useState("all");
 
   const handleFilterOpen = () => {
     setIsFilterOpened(!isFilterOpened);
   };
+
+  const handleFilterClick = (newName) => {
+    console.log("PULA");
+    setFilter(newName);
+  };
   return (
     <>
-      <div className="bg-custom-darkgray top-0  z-10 w-full">
+      <div className="top-0 z-10  w-full bg-custom-darkgray">
         <div className="mx-auto flex h-14 w-full md:w-[750px] lg:w-[1000px] xl:w-[1200px]">
           {/* LOGO */}
           <div className="flex h-full w-24 items-center justify-center text-2xl font-extrabold">
@@ -42,27 +48,42 @@ const Navbar = () => {
                 onClick={handleFilterOpen}
                 className=" relative flex h-full items-center justify-center rounded-l-sm border-r-2 border-gray-700 bg-gray-200 px-2"
               >
-                <div className="mr-1 font-bold">All</div>
+                <div className="mr-1 font-bold">{filter}</div>
                 <FaCaretDown size={"0.9rem"} />
                 {/* Filter Dropdown */}
                 {isFilterOpened && (
                   <div className="absolute left-0 top-[2.3rem] z-20 w-48 rounded-md bg-zinc-800 py-2">
-                    <DropdownItem name={"All"}>
+                    <DropdownItem name={"All"} handleClick={handleFilterClick}>
                       <IoSearch size={"1.25rem"} />
                     </DropdownItem>
-                    <DropdownItem name={"Title"}>
+                    <DropdownItem
+                      name={"Title"}
+                      handleClick={handleFilterClick}
+                    >
                       <MdLocalMovies size={"1.25rem"} />
                     </DropdownItem>
-                    <DropdownItem name={"TV Episodes"}>
+                    <DropdownItem
+                      name={"TV Episodes"}
+                      handleClick={handleFilterClick}
+                    >
                       <FaTv size={"1.25rem"} />
                     </DropdownItem>
-                    <DropdownItem name={"Celebs"}>
+                    <DropdownItem
+                      name={"Celebs"}
+                      handleClick={handleFilterClick}
+                    >
                       <MdPeople size={"1.25rem"} />
                     </DropdownItem>
-                    <DropdownItem name={"Companies"}>
+                    <DropdownItem
+                      name={"Companies"}
+                      handleClick={handleFilterClick}
+                    >
                       <PiBuildingsBold size={"1.25rem"} />
                     </DropdownItem>
-                    <DropdownItem name={"Keywords"}>
+                    <DropdownItem
+                      name={"Keywords"}
+                      handleClick={handleFilterClick}
+                    >
                       <IoMdKey size={"1.25rem"} />
                     </DropdownItem>
                     <DropdownItem name={"Advanced Search"} delimiter={true}>
