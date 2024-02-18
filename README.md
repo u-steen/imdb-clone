@@ -50,7 +50,7 @@ With this project I am looking in creating an improved version of the IMDb UI. I
   - [ ] NavBar
     - [x] Basic layout
     - [ ] Mega Menu
-    - [ ] Search bar + filters
+    - [x] Search bar + filters (visual only)
     - [ ] Navbar showing on scroll-up - NOT on original IMDb
   - [ ] Main Page
     - [ ] HeroBox
