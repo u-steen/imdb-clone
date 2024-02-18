@@ -15,7 +15,8 @@ import { AiOutlineFileSearch } from "react-icons/ai";
 
 const Navbar = () => {
   const [isFilterOpened, setIsFilterOpened] = useState(false);
-  const [filter, setFilter] = useState("all");
+  const [filter, setFilter] = useState("All");
+  const [searchBar, setSearchBar] = useState("");
 
   const handleFilterOpen = () => {
     setIsFilterOpened(!isFilterOpened);
@@ -23,6 +24,13 @@ const Navbar = () => {
 
   const handleFilterClick = (newName) => {
     setFilter(newName);
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log({ filter: e.target[0].value, searchTerm: e.target[1].value });
+    setSearchBar("");
+    setFilter("All");
   };
   return (
     <>
@@ -42,7 +50,10 @@ const Navbar = () => {
           </div>
           {/* SEARCH BAR */}
           <div className="flex grow items-center">
-            <div className="mx-auto flex h-8 w-full items-center justify-between">
+            <form
+              onSubmit={handleSearch}
+              className="mx-auto flex h-8 w-full items-center justify-between"
+            >
               <div
                 onClick={handleFilterOpen}
                 className=" relative flex h-full items-center justify-center rounded-l-sm border-r-2 border-gray-700 bg-gray-200 px-2"
@@ -50,6 +61,7 @@ const Navbar = () => {
                 <div className="mr-1 font-bold">{filter}</div>
                 <FaCaretDown size={"0.9rem"} />
                 {/* Filter Dropdown */}
+                <input type="hidden" name="filter" value={filter} />
                 {isFilterOpened && (
                   <div className="absolute left-0 top-[2.3rem] z-20 w-48 rounded-md bg-zinc-800 py-2">
                     <DropdownItem name={"All"} handleClick={handleFilterClick}>
@@ -91,18 +103,24 @@ const Navbar = () => {
                   </div>
                 )}
               </div>
-
               <div className="flex h-8 grow items-center justify-start">
                 <input
                   type="text"
                   placeholder=" Search IMDb"
                   className="h-full w-full"
+                  onChange={(e) => {
+                    setSearchBar(e.target.value);
+                  }}
+                  value={searchBar}
                 ></input>
               </div>
-              <div className="flex h-8 items-center justify-center rounded-r-sm bg-gray-200 p-2">
+              <button
+                type={"submit"}
+                className="flex h-8 items-center justify-center rounded-r-sm bg-gray-200 p-2"
+              >
                 <IoSearch size={"1.5rem"} />
-              </div>
-            </div>
+              </button>
+            </form>
           </div>
           {/* WATCH LIST */}
           <div className="flex w-fit items-center justify-center">
