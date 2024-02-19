@@ -2,6 +2,7 @@ import movies_db from "/src/assets/movies_db.json";
 import MoviePosterItem from "../components/MoviePosterItem";
 import { FaRegCirclePlay } from "react-icons/fa6";
 import { SiRottentomatoes } from "react-icons/si";
+import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { useState } from "react";
 
 const Home = () => {
@@ -23,12 +24,17 @@ export default Home;
 const Herobox = () => {
   const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
   const currentMovie = movies_db[currentMovieIndex];
-  const changeCurrMovie = () => {
+  const nextMovie = () => {
     const nextIndex = (currentMovieIndex + 1) % movies_db.length;
     setCurrentMovieIndex(nextIndex);
   };
+  const previousMovie = () => {
+    const nextIndex = (currentMovieIndex - 1) % movies_db.length;
+    if (nextIndex < 0) setCurrentMovieIndex(movies_db.length - 1);
+    else setCurrentMovieIndex(nextIndex);
+  };
   return (
-    <div onClick={changeCurrMovie} className="flex">
+    <div className="flex">
       {/* Poster */}
       <div className="">
         <MoviePosterItem // size={"20rem"}
@@ -45,7 +51,7 @@ const Herobox = () => {
           </h1>
         </div>
         {/* Description */}
-        <div className="bg-custom-darkgray p-6">
+        <div className="bg-custom-darkgray p-6 px-10">
           <p className="text-lg text-white">{currentMovie.description}</p>
         </div>
         {/* Button box */}
@@ -63,6 +69,19 @@ const Herobox = () => {
             </button>
           </div>
         </div>
+        {/* Next and Prev Buttons */}
+        <button
+          onClick={previousMovie}
+          className="active:bg-custom-darkgray-active absolute left-0 top-52 flex h-16 w-8 items-center justify-center rounded-r-md border-b-[1px] border-r-[1px] border-t-[1px] border-gray-400 bg-custom-darkgray/50 text-white hover:bg-[#505050]/40"
+        >
+          <FaChevronLeft size={"1.5rem"} />
+        </button>
+        <button
+          onClick={nextMovie}
+          className="active:bg-custom-darkgray-active absolute right-0 top-52 flex h-16 w-8 items-center justify-center rounded-l-md border-b-[1px] border-l-[1px] border-t-[1px] border-gray-400 bg-custom-darkgray/50 text-white hover:bg-[#505050]/40"
+        >
+          <FaChevronRight size={"1.5rem"} />
+        </button>
       </div>
       {/* Up next */}
       <div className="ml-2 w-[32rem] bg-yellow-200">
