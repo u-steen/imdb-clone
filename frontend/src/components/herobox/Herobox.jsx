@@ -1,4 +1,3 @@
-import movies_db from "/src/assets/movies_db.json";
 import MoviePosterItem from "../MoviePosterItem";
 import { FaRegCirclePlay } from "react-icons/fa6";
 import { SiRottentomatoes } from "react-icons/si";
@@ -34,9 +33,8 @@ MovieRollItem.propTypes = {
   index: PropTypes.number,
 };
 
-const Herobox = () => {
+const Herobox = ({ movieRoll }) => {
   const [currentMovieIndex, setCurrentMovieIndex] = useState(0);
-  const movieRoll = [movies_db[0], movies_db[1], movies_db[2], movies_db[3]];
   const currentMovie = movieRoll[currentMovieIndex];
 
   const nextMovie = () => {
