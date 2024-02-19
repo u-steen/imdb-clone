@@ -7,12 +7,17 @@ import { useState } from "react";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import PropTypes from "prop-types";
 
-const MovieRollItem = ({ movie }) => {
-  console.log(movie.poster_url);
+// HACK: passing the function and the argument (index) is awkward
+const MovieRollItem = ({ movie, handleClick, index }) => {
   return (
-    <div className="relative h-[9rem] overflow-hidden bg-purple-400">
+    <div
+      onClick={() => {
+        handleClick(index);
+      }}
+      className="relative h-[9rem] overflow-hidden"
+    >
       <img
-        className="absolute top-[-6rem] brightness-50 hover:brightness-[0.8]"
+        className="absolute top-[-6rem] brightness-50 hover:brightness-[0.8] active:brightness-105"
         src={movie.poster_url}
         alt="poster"
       />
@@ -25,6 +30,8 @@ const MovieRollItem = ({ movie }) => {
 
 MovieRollItem.propTypes = {
   movie: PropTypes.element,
+  handleClick: PropTypes.func,
+  index: PropTypes.number,
 };
 
 const Herobox = () => {
@@ -125,12 +132,18 @@ const Herobox = () => {
         <div className="flex w-full flex-col justify-between">
           <MovieRollItem
             movie={movieRoll[(currentMovieIndex + 1) % movieRoll.length]}
+            handleClick={setCurrentMovieIndex}
+            index={(currentMovieIndex + 1) % movieRoll.length}
           />
           <MovieRollItem
             movie={movieRoll[(currentMovieIndex + 2) % movieRoll.length]}
+            handleClick={setCurrentMovieIndex}
+            index={(currentMovieIndex + 2) % movieRoll.length}
           />
           <MovieRollItem
             movie={movieRoll[(currentMovieIndex + 3) % movieRoll.length]}
+            handleClick={setCurrentMovieIndex}
+            index={(currentMovieIndex + 3) % movieRoll.length}
           />
         </div>
       </div>
