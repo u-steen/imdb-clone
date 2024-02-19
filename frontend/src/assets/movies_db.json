@@ -7,8 +7,8 @@
     "year": 1994,
     "description": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
     "duration": "2h 34m",
-    "trailer_link": "",
-    "rt_link": ""
+    "trailer_url": "https://www.youtube.com/watch?v=s7EdQ4FqbhY",
+    "rt_url": "https://www.rottentomatoes.com/m/pulp_fiction"
   },
   {
     "id": 2,
@@ -17,7 +17,9 @@
     "poster_url": "/src/imgs/oppenheimer_2023/poster.jpg",
     "year": 2023,
     "description": "A dramatization of the life story of J. Robert Oppenheimer, the physicist who had a large hand in the development of the atomic bomb, thus helping end World War 2. We see his life from university days all the way to post-WW2, where his fame saw him embroiled in political machinations. ",
-    "duration": "3h"
+    "duration": "3h",
+    "trailer_url": "https://www.youtube.com/watch?v=bK6ldnjE3Y0",
+    "rt_url": "https://www.rottentomatoes.com/m/oppenheimer_2023"
   },
   {
     "id": 3,

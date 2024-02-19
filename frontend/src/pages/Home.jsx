@@ -5,10 +5,7 @@ const Home = () => {
     <>
       <div className="container mx-auto w-full md:w-[750px] lg:w-[1000px] xl:w-[1200px]">
         {/* Hero Box */}
-        <div className="">
-          {/* Main Container */}
-          <Herobox />
-        </div>
+        <Herobox />
       </div>
     </>
   );

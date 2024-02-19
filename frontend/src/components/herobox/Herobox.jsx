@@ -61,31 +61,45 @@ const Herobox = () => {
           </h1>
         </div>
         {/* Description */}
-        <div className="bg-custom-darkgray p-6 px-10">
+        <div className="bg-gradient-to-b from-custom-darkgray to-black p-6 px-10">
           <p className="text-lg text-white">{currentMovie.description}</p>
         </div>
         {/* Button box */}
-        <div className="item absolute bottom-0 left-4 flex w-[35rem] justify-center">
-          <div className="hover:bg-custom-darkgray-hover active:bg-custom-darkgray-active mr-2 flex h-14 w-1/2 items-center justify-center bg-custom-darkgray">
-            <button className="flex items-center justify-center text-white">
-              <FaRegCirclePlay size={"2rem"} />
-              <h4 className="ml-2 text-lg font-bold">Watch Trailer</h4>
-              <FaExternalLinkAlt
-                className="ml-4 text-gray-500"
-                size={"0.8rem"}
-              />
-            </button>
-          </div>
-          <div className="flex h-14 w-1/2 items-center justify-center bg-custom-darkgray hover:bg-[#181818] active:bg-[#282828]">
-            <button className="flex items-center justify-center text-white">
-              <SiRottentomatoes size={"2rem"} />
-              <h4 className="ml-2 text-lg font-bold">Where can I watch?</h4>
-              <FaExternalLinkAlt
-                className="ml-4 text-gray-500"
-                size={"0.8rem"}
-              />
-            </button>
-          </div>
+        <div className="item absolute bottom-0 left-4 flex w-[35rem] justify-start">
+          {/* Button 1 */}
+          {currentMovie.trailer_url && (
+            <a
+              href={currentMovie.trailer_url}
+              target="_blank"
+              className="hover:bg-custom-darkgray-hover active:bg-custom-darkgray-active mr-2 flex h-14 w-1/2 items-center justify-center bg-custom-darkgray"
+            >
+              <button className="flex items-center justify-center text-white">
+                <FaRegCirclePlay size={"2rem"} />
+                <h4 className="ml-2 text-lg font-bold">Watch Trailer</h4>
+                <FaExternalLinkAlt
+                  className="ml-4 text-gray-500"
+                  size={"0.8rem"}
+                />
+              </button>
+            </a>
+          )}
+          {/* Button 2 */}
+          {currentMovie.rt_url && (
+            <a
+              href={currentMovie.rt_url}
+              target="_blank"
+              className="flex h-14 w-1/2 items-center justify-center bg-custom-darkgray hover:bg-[#181818] active:bg-[#282828]"
+            >
+              <button className="flex items-center justify-center text-white">
+                <SiRottentomatoes size={"2rem"} />
+                <h4 className="ml-2 text-lg font-bold">Where can I watch?</h4>
+                <FaExternalLinkAlt
+                  className="ml-4 text-gray-500"
+                  size={"0.8rem"}
+                />
+              </button>
+            </a>
+          )}
         </div>
         {/* Next and Prev Buttons */}
         <button
