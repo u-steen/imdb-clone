@@ -2,7 +2,7 @@ import { WatchlistNavButton } from "./WatchlistNavButton";
 import { HiOutlineMenu } from "react-icons/hi";
 import { IoSearch } from "react-icons/io5";
 import { FaCaretDown } from "react-icons/fa6";
-import Logo from "./Logo";
+import Logo from "../Logo";
 import ProfileNavButton from "./ProfileNavButton";
 import { useState } from "react";
 import DropdownItem from "./DropdownItem";
@@ -12,6 +12,7 @@ import { MdPeople } from "react-icons/md";
 import { PiBuildingsBold } from "react-icons/pi";
 import { IoMdKey } from "react-icons/io";
 import { AiOutlineFileSearch } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isFilterOpened, setIsFilterOpened] = useState(false);
@@ -37,9 +38,11 @@ const Navbar = () => {
       <div className="top-0 z-10  w-full bg-custom-darkgray">
         <div className="mx-auto flex h-14 w-full md:w-[750px] lg:w-[1000px] xl:w-[1200px]">
           {/* LOGO */}
-          <div className="flex h-full w-24 items-center justify-center text-2xl font-extrabold">
+          <div className="flex h-full w-fit items-center justify-center text-2xl font-extrabold">
             {/* <div className="rounded-sm bg-yellow-400 px-1">IMDb</div> */}
-            <Logo className="fill-custom-primary" />
+            <Link to="/">
+              <Logo className="fill-custom-primary" />
+            </Link>
           </div>
           {/* MENU */}
           <div className="flex w-28 items-center justify-center">

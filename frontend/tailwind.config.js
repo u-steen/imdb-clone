@@ -6,6 +6,8 @@ export default {
       colors: {
         "custom-primary": "#F5C92A",
         "custom-darkgray": "#121212",
+        "custom-darkgray-hover": "#181818",
+        "custom-darkgray-active": "#282828",
       },
     },
   },
