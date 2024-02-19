@@ -6,7 +6,9 @@
     "poster_url": "/src/imgs/pulp_fiction_1994/poster.jpg",
     "year": 1994,
     "description": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
-    "duration": "2h 34m"
+    "duration": "2h 34m",
+    "trailer_link": "",
+    "rt_link": ""
   },
   {
     "id": 2,
@@ -25,5 +27,14 @@
     "year": 2023,
     "description": "Barbie and Ken are having the time of their lives in the colorful and seemingly perfect world of Barbie Land. However, when they get a chance to go to the real world, they soon discover the joys and perils of living among humans.",
     "duration": "1h 54m"
+  },
+  {
+    "id": 4,
+    "movie_title": "The Boy and the Heron",
+    "director": ["Hayao Miyazaki"],
+    "poster_url": "/src/imgs/theboyandtheheron_2023/poster.jpg",
+    "year": 2023,
+    "description": "After losing his mother during the war, young Mahito moves to his family's estate in the countryside. There, a series of mysterious events lead him to a secluded and ancient tower, home to a mischievous gray heron. When Mahito's new stepmother disappears, he follows the gray heron into the tower, and enters a fantastic world shared by the living and the dead.",
+    "duration": "2h 4m"
   }
 ]
