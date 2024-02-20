@@ -25,7 +25,10 @@ const MovieCard = ({ movie }) => {
       <div className="mx-auto w-11/12">
         {/* Add to watchlist */}
         <div className="flex items-center justify-center rounded-md bg-zinc-200/10 p-2 hover:bg-zinc-200/20 active:bg-zinc-200/30">
-          <h4 className="text-lg font-bold text-blue-400"> + Watchlist</h4>
+          <h4 className="flex items-center justify-center text-lg font-bold text-blue-400">
+            <FaPlus size={"1.1rem"} />
+            <h4 className="ml-1">Watchlist</h4>
+          </h4>
         </div>
         {/* Trailer */}
         {movie.trailer_url && (
