@@ -13,7 +13,7 @@ const MovieRollItem = ({ movie, handleClick, index }) => {
       onClick={() => {
         handleClick(index);
       }}
-      className="relative h-[9rem] overflow-hidden"
+      className="relative h-[8.6rem] overflow-hidden"
     >
       <img
         className="absolute top-[-6rem] brightness-50 hover:brightness-[0.8] active:brightness-105"
@@ -51,14 +51,13 @@ const Herobox = ({ movieRoll }) => {
   return (
     <div className="flex">
       {/* Poster */}
-      <div className="">
+      <div className="mr-2">
         <MoviePosterItem // size={"20rem"}
-          className=""
           url={currentMovie.poster_url}
         />
       </div>
       {/* Description Box */}
-      <div className="relative w-[66rem]">
+      <div className="relative h-[30rem] w-[66rem]">
         {/* Title */}
         <div className="p-6">
           <h1 className="font-oswald text-5xl font-extrabold text-white">
@@ -121,13 +120,13 @@ const Herobox = ({ movieRoll }) => {
         </button>
       </div>
       {/* Up next */}
-      <div className="ml-2 w-[32rem]">
-        <div className=" p-2">
+      <div className="ml-2 h-fit w-[32rem]">
+        <div className="p-2">
           <h3 className="text-2xl font-semibold text-custom-primary">
             Up next
           </h3>
         </div>
-        <div className="flex w-full flex-col justify-between">
+        <div className="flex w-full flex-col justify-between gap-2">
           <MovieRollItem
             movie={movieRoll[(currentMovieIndex + 1) % movieRoll.length]}
             handleClick={setCurrentMovieIndex}
