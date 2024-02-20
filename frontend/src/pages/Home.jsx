@@ -1,6 +1,7 @@
 import Herobox from "./../components/herobox/Herobox";
 import movies_db from "/src/assets/movies_db.json";
 import { FaPlus } from "react-icons/fa6";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const MovieCard = ({ movie }) => {
   console.log(movie);
@@ -27,20 +28,35 @@ const MovieCard = ({ movie }) => {
           <h4 className="text-lg font-bold text-blue-400"> + Watchlist</h4>
         </div>
         {/* Trailer */}
-        <div className="mt-2 flex items-center justify-center rounded-md p-2 hover:bg-zinc-200/10 active:bg-zinc-200/20">
-          <h4 className="text-lg text-white">Trailer</h4>
-        </div>
+        {movie.trailer_url && (
+          <a href={movie.trailer_url} target="_blank">
+            <div className="mt-2 flex items-center justify-center rounded-md p-2 hover:bg-zinc-200/10 active:bg-zinc-200/20">
+              <h4 className="text-lg text-white">Trailer</h4>
+              <FaExternalLinkAlt
+                className="ml-2 text-gray-600"
+                size={"0.8rem"}
+              />
+            </div>
+          </a>
+        )}
       </div>
     </div>
   );
 };
 
 const Home = () => {
-  const movieRoll = [movies_db[0], movies_db[1], movies_db[2], movies_db[3]];
+  const movieRoll = [
+    movies_db[0],
+    movies_db[1],
+    movies_db[2],
+    movies_db[3],
+    movies_db[4],
+  ];
 
   return (
     <>
       <div className="container mx-auto w-full md:w-[750px] lg:w-[1000px] xl:w-[1200px]">
+        <div className="h-6" />
         {/* Hero Box */}
         <Herobox movieRoll={movieRoll} />
         <div className="h-32" />
