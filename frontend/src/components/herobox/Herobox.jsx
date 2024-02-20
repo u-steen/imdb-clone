@@ -61,8 +61,8 @@ const Herobox = ({ movieRoll }) => {
       <div className="relative w-[66rem]">
         {/* Title */}
         <div className="p-6">
-          <h1 className="text-5xl font-extrabold text-white">
-            {currentMovie.movie_title}
+          <h1 className="font-oswald text-5xl font-extrabold text-white">
+            {currentMovie.movie_title.toUpperCase()}
           </h1>
         </div>
         {/* Description */}
@@ -76,7 +76,7 @@ const Herobox = ({ movieRoll }) => {
             <a
               href={currentMovie.trailer_url}
               target="_blank"
-              className="hover:bg-custom-darkgray-hover active:bg-custom-darkgray-active mr-2 flex h-14 w-1/2 items-center justify-center bg-custom-darkgray"
+              className="mr-2 flex h-14 w-1/2 items-center justify-center bg-custom-darkgray hover:bg-custom-darkgray-hover active:bg-custom-darkgray-active"
             >
               <button className="flex items-center justify-center text-white">
                 <FaRegCirclePlay size={"2rem"} />
@@ -109,13 +109,13 @@ const Herobox = ({ movieRoll }) => {
         {/* Next and Prev Buttons */}
         <button
           onClick={previousMovie}
-          className="active:bg-custom-darkgray-active absolute left-0 top-52 flex h-16 w-8 items-center justify-center rounded-r-md border-b-[1px] border-r-[1px] border-t-[1px] border-gray-400 bg-custom-darkgray/50 text-white hover:bg-[#505050]/40"
+          className="absolute left-0 top-52 flex h-16 w-8 items-center justify-center rounded-r-md border-b-[1px] border-r-[1px] border-t-[1px] border-gray-400 bg-custom-darkgray/50 text-white hover:bg-[#505050]/40 active:bg-custom-darkgray-active"
         >
           <FaChevronLeft size={"1.5rem"} />
         </button>
         <button
           onClick={nextMovie}
-          className="active:bg-custom-darkgray-active absolute right-0 top-52 flex h-16 w-8 items-center justify-center rounded-l-md border-b-[1px] border-l-[1px] border-t-[1px] border-gray-400 bg-custom-darkgray/50 text-white hover:bg-[#505050]/40"
+          className="absolute right-0 top-52 flex h-16 w-8 items-center justify-center rounded-l-md border-b-[1px] border-l-[1px] border-t-[1px] border-gray-400 bg-custom-darkgray/50 text-white hover:bg-[#505050]/40 active:bg-custom-darkgray-active"
         >
           <FaChevronRight size={"1.5rem"} />
         </button>

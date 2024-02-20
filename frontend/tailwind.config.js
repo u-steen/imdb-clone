@@ -9,6 +9,10 @@ export default {
         "custom-darkgray-hover": "#181818",
         "custom-darkgray-active": "#282828",
       },
+      fontFamily: {
+        roboto: ["roboto", "monospace"],
+        oswald: ["oswald", "monospace"],
+      },
     },
   },
   plugins: [],

@@ -55,7 +55,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="container mx-auto w-full md:w-[750px] lg:w-[1000px] xl:w-[1200px]">
+      <div className="font-roboto container mx-auto w-full md:w-[750px] lg:w-[1000px] xl:w-[1200px]">
         <div className="h-6" />
         {/* Hero Box */}
         <Herobox movieRoll={movieRoll} />
@@ -63,14 +63,14 @@ const Home = () => {
         {/* What to watch List*/}
         <div className="">
           <div className="mb-12 border-b-2 border-custom-primary p-2">
-            <h1 className="text-4xl font-extrabold text-custom-primary">
+            <h1 className="font-oswald text-4xl font-extrabold text-custom-primary">
               What to Watch
             </h1>
           </div>
           {/* Top Picks */}
           <div className="mb-16">
             <div className="mb-2">
-              <h1 className="text-3xl font-bold text-custom-primary">
+              <h1 className="font-oswald text-3xl font-bold text-custom-primary">
                 Top Picks
               </h1>
             </div>
@@ -84,7 +84,7 @@ const Home = () => {
           {/* From your Watchlist */}
           <div className="mb-16">
             <div className="mb-2">
-              <h1 className="text-3xl font-bold text-custom-primary">
+              <h1 className="font-oswald text-3xl font-bold text-custom-primary">
                 From your Watchlist
               </h1>
             </div>
