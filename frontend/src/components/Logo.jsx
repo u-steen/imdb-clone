@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 
-const Logo = ({ className }) => {
+const Logo = ({ className, size }) => {
   return (
     <svg
       id="home_img"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
-      width="64"
-      height="32"
+      width={size * 64}
+      height={size * 32}
       viewBox="0 0 64 32"
       version="1.1"
     >
@@ -30,5 +30,10 @@ const Logo = ({ className }) => {
 
 Logo.propTypes = {
   className: PropTypes.string,
+  size: PropTypes.number,
+};
+
+Logo.defaultProps = {
+  size: 1,
 };
 export default Logo;
