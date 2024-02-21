@@ -49,16 +49,16 @@ With this project I am looking in creating an improved version of the IMDb UI. I
 
   - [ ] NavBar
     - [x] Basic layout
-    - [ ] Mega Menu
+    - [x] Mega Menu
     - [x] Search bar + filters (visual only)
     - [ ] Close dropdowns when user moves mouse outside the menu
     - [ ] Navbar showing on scroll-up - NOT on original IMDb
   - [ ] Main Page
     - [x] HeroBox
-    - [ ] What to watch + other lists
+    - [x] What to watch + other lists
     - [ ] New Trailers
     - [ ] Actors and other stuff
-  - [ ] Footer
+  - [x] Footer
   - [ ] Movie Page
   - [ ] Person Page
   - [ ] User Page
