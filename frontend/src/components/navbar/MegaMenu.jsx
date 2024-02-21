@@ -12,6 +12,10 @@ const MenuItem = ({ text }) => {
   return <h4 className="p-2 text-lg hover:underline">{text}</h4>;
 };
 
+MenuItem.propTypes = {
+  text: PropTypes.string,
+};
+
 const MenuTitle = ({ text, icon }) => {
   return (
     <div className="flex items-center gap-2 p-2 text-custom-primary">
@@ -21,7 +25,7 @@ const MenuTitle = ({ text, icon }) => {
   );
 };
 
-MenuTitle.PropTypes = {
+MenuTitle.propTypes = {
   text: PropTypes.string,
   icon: PropTypes.element,
 };
@@ -29,7 +33,7 @@ MenuTitle.PropTypes = {
 const MegaMenu = ({ handleClose }) => {
   useEffect(() => {}, []);
   return (
-    <div className="absolute left-0 top-0 z-20 h-full w-full bg-custom-darkgray font-roboto">
+    <div className="fixed left-0 top-0 z-20 h-full w-full overflow-y-auto bg-custom-darkgray font-roboto">
       <div className="container mx-auto mt-12 w-5/6">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -119,7 +123,7 @@ const MegaMenu = ({ handleClose }) => {
   );
 };
 
-MegaMenu.PropTypes = {
+MegaMenu.propTypes = {
   handleClose: PropTypes.func,
 };
 

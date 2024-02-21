@@ -21,6 +21,10 @@ const Navbar = () => {
   const [searchBar, setSearchBar] = useState("");
   const [isMenuOpened, setIsMenuOpened] = useState(false);
 
+  const body = document.body;
+  if (isMenuOpened) body.style.overflow = "hidden";
+  else body.style.overflow = "auto";
+
   const handleFilterOpen = () => {
     setIsFilterOpened(!isFilterOpened);
   };
