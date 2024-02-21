@@ -16,7 +16,7 @@ const MovieRollItem = ({ movie, handleClick, index }) => {
       className="relative h-[8.6rem] overflow-hidden"
     >
       <img
-        className="absolute top-[-6rem] brightness-[0.9] duration-200 hover:scale-[1.02] hover:brightness-[0.7] active:brightness-105"
+        className="absolute top-[-6rem] brightness-[0.9] duration-200 hover:scale-[1.02] hover:brightness-[0.65] active:brightness-105"
         src={movie.poster_url}
         alt="poster"
       />
@@ -43,8 +43,8 @@ const Herobox = ({ movieRoll }) => {
   };
 
   const previousMovie = () => {
-    const nextIndex = (currentMovieIndex - 1) % movies_db.length;
-    if (nextIndex < 0) setCurrentMovieIndex(movies_db.length - 1);
+    const nextIndex = (currentMovieIndex - 1) % movieRoll.length;
+    if (nextIndex < 0) setCurrentMovieIndex(movieRoll.length - 1);
     else setCurrentMovieIndex(nextIndex);
   };
 
@@ -63,6 +63,7 @@ const Herobox = ({ movieRoll }) => {
           <h1 className="font-oswald text-5xl font-extrabold text-white">
             {currentMovie.movie_title.toUpperCase()}
           </h1>
+          <h4 className="text-gray-400">({currentMovie.year})</h4>
         </div>
         {/* Description */}
         <div className="bg-gradient-to-b from-custom-darkgray to-black p-6 px-10">
