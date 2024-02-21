@@ -16,7 +16,7 @@ const MovieRollItem = ({ movie, handleClick, index }) => {
       className="relative h-[8.6rem] overflow-hidden"
     >
       <img
-        className="absolute top-[-6rem] brightness-50 hover:brightness-[0.8] active:brightness-105"
+        className="absolute top-[-6rem] brightness-50 duration-200 hover:scale-[1.02] hover:brightness-[0.8] active:brightness-105"
         src={movie.poster_url}
         alt="poster"
       />
