@@ -16,11 +16,11 @@ const MovieRollItem = ({ movie, handleClick, index }) => {
       className="relative h-[8.6rem] overflow-hidden"
     >
       <img
-        className="absolute top-[-6rem] brightness-50 duration-200 hover:scale-[1.02] hover:brightness-[0.8] active:brightness-105"
+        className="absolute top-[-6rem] brightness-[0.9] duration-200 hover:scale-[1.02] hover:brightness-[0.7] active:brightness-105"
         src={movie.poster_url}
         alt="poster"
       />
-      <h4 className="absolute bottom-2 left-2 text-xl font-extrabold text-white">
+      <h4 className="absolute bottom-0 flex w-full items-center bg-zinc-800/50 px-2 py-[0.1rem] text-lg font-extrabold text-gray-50">
         {movie.movie_title}
       </h4>
     </div>
