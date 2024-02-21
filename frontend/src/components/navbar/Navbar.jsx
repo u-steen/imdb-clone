@@ -13,11 +13,13 @@ import { PiBuildingsBold } from "react-icons/pi";
 import { IoMdKey } from "react-icons/io";
 import { AiOutlineFileSearch } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import MegaMenu from "./MegaMenu";
 
 const Navbar = () => {
   const [isFilterOpened, setIsFilterOpened] = useState(false);
   const [filter, setFilter] = useState("All");
   const [searchBar, setSearchBar] = useState("");
+  const [isMenuOpened, setIsMenuOpened] = useState(false);
 
   const handleFilterOpen = () => {
     setIsFilterOpened(!isFilterOpened);
@@ -33,6 +35,10 @@ const Navbar = () => {
     setSearchBar("");
     setFilter("All");
   };
+
+  const handleMegaMenu = () => {
+    setIsMenuOpened(!isMenuOpened);
+  };
   return (
     <>
       <div className="top-0 z-10  w-full bg-custom-darkgray">
@@ -46,11 +52,15 @@ const Navbar = () => {
           </div>
           {/* MENU */}
           <div className="flex w-28 items-center justify-center">
-            <div className="flex w-11/12 items-center justify-center rounded-md py-0.5 text-gray-200 hover:bg-slate-400/10 active:bg-slate-400/20">
+            <div
+              onClick={handleMegaMenu}
+              className="flex w-11/12 items-center justify-center rounded-md py-0.5 text-gray-200 hover:bg-slate-400/10 active:bg-slate-400/20"
+            >
               <HiOutlineMenu size={"1.4rem"} />
               <h3 className="pl-1 text-lg font-semibold">Menu</h3>
             </div>
           </div>
+          {isMenuOpened && <MegaMenu handleClose={handleMegaMenu} />}
           {/* SEARCH BAR */}
           <div className="flex grow items-center">
             <form
