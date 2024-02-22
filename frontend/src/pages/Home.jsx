@@ -2,6 +2,7 @@ import Herobox from "./../components/herobox/Herobox";
 import movies_db from "/src/assets/movies_db.json";
 import { FaPlus } from "react-icons/fa6";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import PropTypes from "prop-types";
 
 const MovieCard = ({ movie }) => {
   console.log(movie);
@@ -47,6 +48,10 @@ const MovieCard = ({ movie }) => {
   );
 };
 
+MovieCard.propTypes = {
+  movie: PropTypes.object,
+};
+
 const Home = () => {
   const movieRoll = [
     movies_db[0],
@@ -58,7 +63,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="font-roboto container mx-auto w-full md:w-[750px] lg:w-[1000px] xl:w-[1200px]">
+      <div className="container mx-auto w-full font-roboto md:w-[750px] lg:w-[1000px] xl:w-[1200px]">
         <div className="h-6" />
         {/* Hero Box */}
         <Herobox movieRoll={movieRoll} />

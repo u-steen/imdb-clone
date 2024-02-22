@@ -149,4 +149,8 @@ const Herobox = ({ movieRoll }) => {
   );
 };
 
+Herobox.propTypes = {
+  movieRoll: PropTypes.arrayOf(PropTypes.object),
+};
+
 export default Herobox;

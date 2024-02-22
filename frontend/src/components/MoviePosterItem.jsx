@@ -1,7 +1,7 @@
 import { PropTypes } from "prop-types";
 import { FaPlus } from "react-icons/fa6";
 
-const MoviePosterItem = ({ url, size }) => {
+const MoviePosterItem = ({ url }) => {
   return (
     <div className={`relative h-[30rem] w-[20rem] overflow-hidden`}>
       <img src={url} alt="teapa" className="duration-200 hover:scale-105" />
@@ -17,7 +17,6 @@ const MoviePosterItem = ({ url, size }) => {
 
 MoviePosterItem.propTypes = {
   url: PropTypes.string,
-  size: PropTypes.string,
 };
 
 MoviePosterItem.defaultProps = {
