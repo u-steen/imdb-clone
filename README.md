@@ -15,8 +15,12 @@ With this project I am looking in creating an improved version of the IMDb UI. I
 ### Back End
 
 - NodeJS (with Express.js)
-- ORM: pgp
 - PostgreSQL
+- ORM: pgp
+
+#### Database ERD:
+
+![Database Drawing](/docs/image.png)
 
 ### Other:
 
