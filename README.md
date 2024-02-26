@@ -14,9 +14,9 @@ With this project I am looking in creating an improved version of the IMDb UI. I
 
 ### Back End
 
-- NodeJS
-- ORM: TBD
-- MySql or SQLite
+- NodeJS (with Express.js)
+- ORM: pgp
+- PostgreSQL
 
 ### Other:
 
@@ -31,7 +31,7 @@ With this project I am looking in creating an improved version of the IMDb UI. I
   - HTML, CSS (Tailwind), JavaScript
   - React
   - React Packages: Router, Framer and more
-  - NodeJS
+  - NodeJS (with ExpressJS)
   - DataBases
 - Create a strong portfolio piece
 
