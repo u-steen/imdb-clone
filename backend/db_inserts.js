@@ -12,6 +12,7 @@ import {
   genreData,
   contentTypeData,
   usersData,
+  reviewData,
 } from "./db_data.js";
 
 // Postgres
@@ -130,6 +131,24 @@ const insertUsers = async () => {
   } finally {
     const result = await db.query(`SELECT * FROM users`);
     console.log(result);
+  }
+};
+
+const insertReviews = async () => {
+  try {
+    for (const review of reviewData) {
+      await db.query(
+        `
+        INSERT INTO reviews (user_id, content_id, review_text, rating)
+        VALUES ($1, $2, $3, $4);`,
+        [review.user_id, review.content_id, review.review_text, review.rating]
+      );
+    }
+  } catch (error) {
+    console.log("[ERROR]", error);
+  } finally {
+    const result = await db.query(`SELECT * FROM reviews`);
+    console.log(result);
     pgp.end();
   }
 };
@@ -140,6 +159,7 @@ const insertData = async () => {
   await insertGenres();
   await insertContentType();
   await insertUsers();
+  await insertReviews();
 };
 
 insertData();

@@ -90,9 +90,10 @@ const createAllTables = async () => {
     await db.query(`
     CREATE TABLE reviews (
       review_id SERIAL PRIMARY KEY,
+      user_id INT REFERENCES users(user_id),
+      content_id INT REFERENCES content(content_id),
       review_text TEXT,
-      rating INT,
-      user_id INT REFERENCES users(user_id)
+      rating INT
     )`);
     await db.query(`
     CREATE TABLE roles(

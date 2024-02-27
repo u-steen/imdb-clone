@@ -11,13 +11,9 @@ const db = pgp(
   `postgres://${dbUsername}:${dbPassword}@${dbHost}:${dbPort}/${dbName}`
 );
 
-db.one("SELECT $1 AS value", 123)
-  .then((data) => {
-    console.log("DATA:", data.value);
-  })
-  .catch((error) => {
-    console.log("ERROR:", error);
-  });
+const getMoviesQuery = `SELECT * FROM movies;`;
+
+db.query(`create table test2 (id serial primary key, name varchar(200))`);
 
 // Exiting the PGP
 pgp.end();
