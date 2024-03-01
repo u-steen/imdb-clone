@@ -89,6 +89,18 @@ export const peopleData = [
     description:
       "Canadian actor and musician. Known for his roles in movies like La La Land.",
   },
+  {
+    person_name: "Bryan Cranston",
+    birth_date: "07-03-1956",
+    description:
+      "American actor best known for his role as Walter White in Breaking Bad.",
+  },
+  {
+    person_name: "Aaron Paul",
+    birth_date: "27-08-1979",
+    description:
+      "American actor best known for his role as Jesse Pinkman in Breaking Bad.",
+  },
 ];
 
 export const contentTypeData = [
@@ -134,5 +146,15 @@ export const contentData = [
     duration: "2h 34m",
     trailer_url: "https://www.youtube.com/watch?v=s7EdQ4FqbhY",
     rt_url: "https://www.rottentomatoes.com/m/pulp_fiction",
+  },
+  {
+    title: "Breaking Bad",
+    type_id: 2,
+    release_date: "20-01-2008",
+    description:
+      "A high school chemistry teacher turned methamphetamine manufacturer partners with a former student to secure his family's financial future as he battles terminal lung cancer.",
+    duration: "5 seasons",
+    trailer_url: "https://www.youtube.com/watch?v=HhesaQXLuRY",
+    rt_url: "https://www.rottentomatoes.com/tv/breaking_bad",
   },
 ];
