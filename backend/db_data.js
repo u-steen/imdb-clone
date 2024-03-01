@@ -123,3 +123,16 @@ export const reviewData = [
     movie_id: 2,
   },
 ];
+
+export const contentData = [
+  {
+    title: "Pulp Fiction",
+    type_id: 1,
+    release_date: "21-05-1994",
+    description:
+      "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+    duration: "2h 34m",
+    trailer_url: "https://www.youtube.com/watch?v=s7EdQ4FqbhY",
+    rt_url: "https://www.rottentomatoes.com/m/pulp_fiction",
+  },
+];

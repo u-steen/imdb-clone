@@ -13,6 +13,7 @@ import {
   contentTypeData,
   usersData,
   reviewData,
+  contentData,
 } from "./db_data.js";
 
 // Postgres
@@ -149,7 +150,44 @@ const insertReviews = async () => {
   } finally {
     const result = await db.query(`SELECT * FROM reviews`);
     console.log(result);
-    pgp.end();
+  }
+};
+
+const insertContent = async () => {
+  for (const content of contentData) {
+    const {
+      title,
+      type_id,
+      release_date,
+      description,
+      duration,
+      trailer_url,
+      rt_url,
+    } = content;
+    try {
+      await db.query(
+        `
+        INSERT INTO content (title, type, release_date, description, duration, 
+                              trailer_url, rt_url, media_dir_path)
+        VALUES ($1, $2, TO_DATE($3, 'DD-MM-YYYY'), $4, $5, $6, $7, $8)`,
+        [
+          title,
+          type_id,
+          release_date,
+          description,
+          duration,
+          trailer_url,
+          rt_url,
+          "/src/imgs/content/" +
+            title.toLowerCase().replaceAll(" ", "_").replaceAll(".", ""),
+        ]
+      );
+    } catch (error) {
+      console.log("[ERROR]", error);
+    } finally {
+      const result = await db.query(`SELECT * FROM reviews`);
+      console.log(result);
+    }
   }
 };
 
@@ -159,6 +197,7 @@ const insertData = async () => {
   await insertGenres();
   await insertContentType();
   await insertUsers();
+  await insertContent();
   await insertReviews();
 };
 

@@ -45,8 +45,8 @@ const createAllTables = async () => {
     await db.query(`
     CREATE TABLE content (
       content_id SERIAL PRIMARY KEY,
-      content_title VARCHAR(100),
-      content_type VARCHAR(30),
+      title VARCHAR(100),
+      type VARCHAR(30),
       release_date DATE,
       description TEXT,
       duration VARCHAR(50),
