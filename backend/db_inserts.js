@@ -185,7 +185,7 @@ const insertContent = async () => {
     } catch (error) {
       console.log("[ERROR]", error);
     } finally {
-      const result = await db.query(`SELECT * FROM reviews`);
+      const result = await db.query(`SELECT * FROM content`);
       console.log(result);
     }
   }

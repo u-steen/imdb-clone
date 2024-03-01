@@ -108,19 +108,19 @@ export const reviewData = [
     review_text: "Great movie, loved the storyline!",
     rating: 10,
     user_id: 1,
-    movie_id: 2,
+    content_id: 2,
   },
   {
     review_text: "Not bad, but could have been better.",
     rating: 7,
     user_id: 2,
-    movie_id: 1,
+    content_id: 1,
   },
   {
     review_text: "Disappointing. Would not recommend.",
     rating: 2,
-    user_id: 3,
-    movie_id: 2,
+    user_id: 2,
+    content_id: 2,
   },
 ];
 

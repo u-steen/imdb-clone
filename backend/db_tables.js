@@ -119,8 +119,6 @@ const createAllTables = async () => {
     console.log(tableNames);
     pgp.end();
   }
-
-  // Genres
 };
 
 const syncTables = async () => {
