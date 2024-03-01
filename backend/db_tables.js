@@ -20,7 +20,7 @@ const dropAllTables = async () => {
   try {
     // Get all table names in the public schema
     const tableNames = await db.query(
-      `SELECT table_name 
+      `SELECT table_name
       FROM information_schema.tables 
       WHERE table_schema = 'public' 
         AND table_type = 'BASE TABLE'`
@@ -106,6 +106,13 @@ const createAllTables = async () => {
         content_id INT REFERENCES content(content_id),
         person_id INT REFERENCES people(person_id),
         role_id INT REFERENCES roles(role_id)
+      )`);
+    // Content-List
+    await db.query(`
+      CREATE TABLE content_list (
+        list_id SERIAL PRIMARY KEY,
+        list_name VARCHAR(50),
+        user_id INT REFERENCES users(user_id)
       )`);
   } catch (error) {
     console.log("[ERROR]", error);
