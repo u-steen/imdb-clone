@@ -26,21 +26,25 @@ const db = pgp(
 );
 
 const deleteTableData = async () => {
-  try {
-    await db.query(`
-    TRUNCATE 
-      content_people,
-      reviews,
-      content, 
-      people, 
-      roles, 
-      genres, 
-      content_type, 
-      users 
-    RESTART IDENTITY;
+  const tableNames = await db.query(
+    `SELECT table_name
+    FROM information_schema.tables 
+    WHERE table_schema = 'public' 
+      AND table_type = 'BASE TABLE'`
+  );
+  console.log(tableNames);
+  for (const table of tableNames) {
+    try {
+      await db.query(`
+    TRUNCATE TABLE
+      ${table.table_name}
+    RESTART IDENTITY CASCADE;
   `);
-  } catch (error) {
-    console.error("[ERROR] Deleting data:", error);
+    } catch (error) {
+      console.error("[ERROR] Deleting data:", error);
+    } finally {
+      console.log(`${table.table_name} was truncated`);
+    }
   }
 };
 
@@ -67,8 +71,8 @@ const insertPeople = async () => {
   } catch (error) {
     console.log("[ERROR]", error);
   } finally {
-    await db.query(`SELECT * from people`).then((result) => {
-      console.log(result);
+    await db.query(`SELECT COUNT(*) from people`).then((result) => {
+      console.log("People total count", result);
     });
   }
 };
@@ -86,8 +90,8 @@ const insertGenres = async () => {
   } catch (error) {
     console.log("[ERROR]", error);
   } finally {
-    const result = await db.query(`SELECT * FROM genres`);
-    console.log(result);
+    const result = await db.query(`SELECT COUNT(*) FROM genres`);
+    console.log("Total genres count:", result);
   }
 };
 
@@ -95,14 +99,14 @@ const insertContentType = async () => {
   try {
     for (const contentType of contentTypeData) {
       await db.query(`
-      INSERT INTO content_type (content_type_name)
-      VALUES ('${contentType.content_type_name}');`);
+      INSERT INTO ctype (ctype_name)
+      VALUES ('${contentType.ctype_name}');`);
     }
   } catch (error) {
     console.log("[ERROR]", error);
   } finally {
-    const result = await db.query(`SELECT * FROM content_type`);
-    console.log(result);
+    const result = await db.query(`SELECT COUNT(*) FROM ctype`);
+    console.log("Total ctype count", result);
   }
 };
 
@@ -130,8 +134,8 @@ const insertUsers = async () => {
   } catch (error) {
     console.log("[ERROR]", error);
   } finally {
-    const result = await db.query(`SELECT * FROM users`);
-    console.log(result);
+    const result = await db.query(`SELECT COUNT(*) FROM users`);
+    console.log("Total users count", result);
   }
 };
 
@@ -148,8 +152,8 @@ const insertReviews = async () => {
   } catch (error) {
     console.log("[ERROR]", error);
   } finally {
-    const result = await db.query(`SELECT * FROM reviews`);
-    console.log(result);
+    const result = await db.query(`SELECT COUNT(*) FROM reviews`);
+    console.log("Total reviews count", result);
   }
 };
 
@@ -185,8 +189,8 @@ const insertContent = async () => {
     } catch (error) {
       console.log("[ERROR]", error);
     } finally {
-      const result = await db.query(`SELECT * FROM content`);
-      console.log(result);
+      const result = await db.query(`SELECT COUNT(*) FROM content`);
+      console.log("Total content count", result);
     }
   }
 };
