@@ -70,11 +70,11 @@ const createAllTables = async () => {
       genre_name VARCHAR(100),
       description TEXT
     )`);
-    // Content Type
+    // C(ontent) Type
     await db.query(`
-    CREATE TABLE content_type (
-      content_type_id SERIAL PRIMARY KEY,
-      content_type_name VARCHAR(100)
+    CREATE TABLE ctype (
+      ctype_id SERIAL PRIMARY KEY,
+      ctype_name VARCHAR(100)
     )`);
     // Users
     await db.query(`
@@ -90,8 +90,8 @@ const createAllTables = async () => {
     await db.query(`
     CREATE TABLE reviews (
       review_id SERIAL PRIMARY KEY,
-      user_id INT REFERENCES users(user_id),
-      content_id INT REFERENCES content(content_id),
+      user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
+      content_id INT REFERENCES content(content_id) ON DELETE CASCADE,
       review_text TEXT,
       rating INT
     )`);
@@ -103,17 +103,29 @@ const createAllTables = async () => {
     // Content People
     await db.query(`
       CREATE TABLE content_people (
-        content_id INT REFERENCES content(content_id),
-        person_id INT REFERENCES people(person_id),
-        role_id INT REFERENCES roles(role_id)
+        content_id INT REFERENCES content(content_id) ON DELETE CASCADE,
+        person_id INT REFERENCES people(person_id) ON DELETE CASCADE,
+        role_id INT REFERENCES roles(role_id) ON DELETE CASCADE
       )`);
-    // Content-List
+    // C(ontent)-List
     await db.query(`
-      CREATE TABLE content_list (
+      CREATE TABLE clist (
         list_id SERIAL PRIMARY KEY,
         list_name VARCHAR(50),
         user_id INT REFERENCES users(user_id)
       )`);
+    // Content-Genres
+    await db.query(`
+    CREATE TABLE content_genres (
+      content_id INT REFERENCES content(content_id) ON DELETE CASCADE,
+      genres_id INT REFERENCES genres(genre_id) ON DELETE CASCADE
+    )`);
+    // Content - CType
+    await db.query(`
+    CREATE TABLE ctype (
+      content_id INT REFERENCES content(content_id) ON DELETE CASCADE,
+      ctype_id INT REFERENCES ctype(ctype_id) ON DELETE CASCADE
+    )`);
   } catch (error) {
     console.log("[ERROR]", error);
   } finally {
