@@ -90,13 +90,13 @@ export const peopleData = [
       "Canadian actor and musician. Known for his roles in movies like La La Land.",
   },
   {
-    person_name: "Bryan Cranston",
+    personName: "Bryan Cranston",
     birth_date: "07-03-1956",
     description:
       "American actor best known for his role as Walter White in Breaking Bad.",
   },
   {
-    person_name: "Aaron Paul",
+    personName: "Aaron Paul",
     birth_date: "27-08-1979",
     description:
       "American actor best known for his role as Jesse Pinkman in Breaking Bad.",
@@ -104,10 +104,10 @@ export const peopleData = [
 ];
 
 export const contentTypeData = [
-  { content_type_name: "movie" },
-  { content_type_name: "tv-series" },
-  { content_type_name: "documentary" },
-  { content_type_name: "reality-show" },
+  { ctype_name: "movie" },
+  { ctype_name: "tv-series" },
+  { ctype_name: "documentary" },
+  { ctype_name: "reality-show" },
 ];
 
 export const usersData = [
