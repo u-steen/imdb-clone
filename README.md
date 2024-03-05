@@ -4,6 +4,16 @@
 
 With this project I am looking in creating an improved version of the IMDb UI. I find the current UI being overloaded with information and clunky; for an experienced user this is not a problem, but for someone that is visiting the website for the first time it can be overwhelming.
 
+# Screenshots
+
+### Main page
+
+![alt text](/docs/main_page_ss_1.png)
+
+### Mega Menu (activated by pressing the "Menu" button on the Main Page)
+
+![alt text](/docs/main_page_ss_2.png)
+
 # Tech stack
 
 ### Front End
