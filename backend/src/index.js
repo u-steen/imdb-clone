@@ -1,5 +1,14 @@
 // Express
-const express = require("express");
-const app = express();
+import express from "express";
+import ContentRouter from "./routes/content.js";
 
-console.log("Hello world");
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded());
+
+app.use(ContentRouter);
+
+const PORT = 7001;
+app.listen(PORT, () => {
+  console.log(`Running Express server on port ${PORT}`);
+});
