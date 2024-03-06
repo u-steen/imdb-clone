@@ -21,7 +21,7 @@ export const getContentById = async (id) => {
     `SELECT * FROM content WHERE content_id = $1`,
     [+id]
   );
-  return response;
+  return response[0];
 };
 
 export const postContent = async (objectToPost) => {
@@ -52,4 +52,8 @@ export const postContent = async (objectToPost) => {
     ]
   );
   return;
+};
+
+export const deleteContent = async (itemID) => {
+  await db.query(`DELETE FROM content WHERE content_id = $1`, [+itemID]);
 };

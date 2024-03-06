@@ -1,5 +1,10 @@
 import { Router } from "express";
-import { getContentAll, getContentById, postContent } from "../db_queries.js";
+import {
+  getContentAll,
+  getContentById,
+  postContent,
+  deleteContent,
+} from "../db_queries.js";
 
 const router = Router();
 
@@ -11,7 +16,8 @@ router.get("/content", async (req, res) => {
 router.get("/content/:item", async (req, res) => {
   const { item } = req.params;
   const foundItem = await getContentById(item);
-  res.send(foundItem);
+  if (foundItem) res.send(foundItem);
+  else res.sendStatus(404);
 });
 
 router.post("/content", async (req, res) => {
@@ -34,6 +40,16 @@ router.post("/content", async (req, res) => {
     await postContent(itemToPost);
     res.sendStatus(201);
   } else res.sendStatus(400);
+});
+
+router.delete("/content/:itemID", async (req, res) => {
+  const { itemID } = req.params;
+  const foundItem = await getContentById(itemID);
+  if (foundItem) {
+    console.log("Deleting item with ID", itemID);
+    await deleteContent(itemID);
+    res.sendStatus(200);
+  } else res.sendStatus(404);
 });
 
 export default router;
