@@ -30,7 +30,7 @@ With this project I am looking in creating an improved version of the IMDb UI. I
 
 #### Database ERD:
 
-![Database Drawing](/docs/image.png)
+![Database Drawing](/docs/erd.png)
 
 ### Other:
 
@@ -79,6 +79,7 @@ With this project I am looking in creating an improved version of the IMDb UI. I
   - [ ] Movie List Page (for collections)
 
 - [ ] Backend
-  - [ ] Dummy DB for movies (JSON)
   - [ ] WebAPI
-  - [ ] Database
+    - [x] Content requests
+    - [ ] People requests
+  - [x] Database
