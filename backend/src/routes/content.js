@@ -8,8 +8,12 @@ import {
 
 const router = Router();
 
-router.get("/content", async (req, res) => {
-  const { page = 1, pageSize = 20 } = req.body;
+router.get("/content/:page?", async (req, res) => {
+  let { page } = req.params;
+  let { pageSize } = req.body;
+  if (page === undefined) page = 1;
+  if (pageSize === undefined) pageSize = 10;
+  console.log(page, pageSize);
 
   if (page < 1 || pageSize < 1) {
     res.sendStatus(400);
@@ -26,7 +30,7 @@ router.get("/content", async (req, res) => {
   res.send(slicedResponse);
 });
 
-router.get("/content/:item", async (req, res) => {
+router.get("/content/item/:item", async (req, res) => {
   const { item } = req.params;
   const foundItem = await getContentById(item);
   if (foundItem) res.send(foundItem);
