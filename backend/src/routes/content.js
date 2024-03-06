@@ -9,8 +9,21 @@ import {
 const router = Router();
 
 router.get("/content", async (req, res) => {
+  const { page = 1, pageSize = 20 } = req.body;
+
+  if (page < 1 || pageSize < 1) {
+    res.sendStatus(400);
+    return;
+  }
+
   const response = await getContentAll();
-  res.send(response);
+  const slicedResponse = response.slice((page - 1) * pageSize, page * pageSize);
+
+  if (slicedResponse === undefined || slicedResponse.length === 0) {
+    res.sendStatus(404);
+    return;
+  }
+  res.send(slicedResponse);
 });
 
 router.get("/content/:item", async (req, res) => {
@@ -31,9 +44,6 @@ router.post("/content", async (req, res) => {
     trailer_url,
     rt_url,
   } = itemToPost;
-  if (!release_date) itemToPost.release_date = "01-01-0001";
-  if (!trailer_url) itemToPost.trailer_url = "N/A";
-  if (!rt_url) itemToPost.rt_url = "N/A";
 
   if (title && type && description && duration) {
     console.log(itemToPost);
