@@ -23,3 +23,33 @@ export const getContentById = async (id) => {
   );
   return response;
 };
+
+export const postContent = async (objectToPost) => {
+  const {
+    title,
+    type,
+    release_date,
+    description,
+    duration,
+    trailer_url,
+    rt_url,
+  } = objectToPost;
+  console.log(objectToPost);
+  await db.query(
+    `INSERT INTO content(title, type, release_date, description, duration, 
+                        trailer_url, rt_url, media_dir_path)
+    VALUES($1, $2, TO_DATE($3, 'DD-MM-YYYY'), $4, $5, $6, $7, $8)`,
+    [
+      title,
+      type,
+      release_date,
+      description,
+      duration,
+      trailer_url,
+      rt_url,
+      "/src/imgs/content/" +
+        title.toLowerCase().replaceAll(" ", "_").replaceAll(".", ""),
+    ]
+  );
+  return;
+};
