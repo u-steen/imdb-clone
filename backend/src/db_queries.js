@@ -57,6 +57,36 @@ export const postContent = async (objectToPost) => {
 export const deleteContent = async (itemID) => {
   await db.query(`DELETE FROM content WHERE content_id = $1`, [+itemID]);
 };
+
+// AUTH
+
+// Register
+export const registerUser = async ({
+  username,
+  email,
+  birth_date,
+  password_hash,
+  salt,
+  bio,
+}) => {
+  console.log(username, email, birth_date, password_hash, salt);
+  await db.query(
+    `INSERT INTO users (username, email, created_at, birth_date, 
+      password_hash, salt, bio, profile_picture_path)
+    VALUES ($1, $2, CURRENT_DATE, TO_DATE($3, 'DD-MM-YYYY'), $4, $5, $6, $7)`,
+    [
+      username,
+      email,
+      birth_date,
+      password_hash,
+      salt,
+      bio,
+      "/src/imgs/users/" +
+        username.toLowerCase().replaceAll(" ", "_").replaceAll(".", ""),
+    ]
+  );
+};
+
 // Get User
 
 export const getUser = async (username) => {
