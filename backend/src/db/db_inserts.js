@@ -117,11 +117,15 @@ const insertUsers = async () => {
     for (const user of usersData) {
       await db.query(
         `
-      INSERT INTO users (username, created_at, bio, profile_picture_path)
-      VALUES ($1, $2, $3, $4)`,
+      INSERT INTO users (username, email, created_at, birth_date, 
+        password_hash, salt, bio, profile_picture_path)
+      VALUES ($1, $2, CURRENT_DATE, TO_DATE($3, 'DD-MM-YYYY'), $4, $5, $6, $7)`,
         [
           user.username,
-          currentDate,
+          user.email,
+          user.birth_date,
+          user.password_hash,
+          user.salt,
           user.bio,
           "/src/imgs/users/" +
             user.username
@@ -144,9 +148,9 @@ const insertReviews = async () => {
     for (const review of reviewData) {
       await db.query(
         `
-        INSERT INTO reviews (user_id, content_id, review_text, rating)
+        INSERT INTO reviews (username, content_id, review_text, rating)
         VALUES ($1, $2, $3, $4);`,
-        [review.user_id, review.content_id, review.review_text, review.rating]
+        [review.username, review.content_id, review.review_text, review.rating]
       );
     }
   } catch (error) {

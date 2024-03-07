@@ -79,9 +79,12 @@ const createAllTables = async () => {
     // Users
     await db.query(`
     CREATE TABLE users (
-      user_id SERIAL PRIMARY KEY,
-      username VARCHAR(20),
+      username VARCHAR(20) PRIMARY KEY,
+      email VARCHAR(40),
       created_at DATE,
+      birth_date DATE,
+      password_hash VARCHAR(64),
+      salt VARCHAR(8),
       bio TEXT,
       profile_picture_path VARCHAR(100)
     )
@@ -90,7 +93,7 @@ const createAllTables = async () => {
     await db.query(`
     CREATE TABLE reviews (
       review_id SERIAL PRIMARY KEY,
-      user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
+      username VARCHAR(20) REFERENCES users(username) ON DELETE CASCADE,
       content_id INT REFERENCES content(content_id) ON DELETE CASCADE,
       review_text TEXT,
       rating INT
@@ -109,10 +112,10 @@ const createAllTables = async () => {
       )`);
     // C(ontent)-List
     await db.query(`
-      CREATE TABLE clist (
+      CREATE TABLE content_clist (
         list_id SERIAL PRIMARY KEY,
         list_name VARCHAR(50),
-        user_id INT REFERENCES users(user_id)
+        username VARCHAR(20) REFERENCES users(username)
       )`);
     // Content-Genres
     await db.query(`
@@ -122,7 +125,7 @@ const createAllTables = async () => {
     )`);
     // Content - CType
     await db.query(`
-    CREATE TABLE ctype (
+    CREATE TABLE content_ctype (
       content_id INT REFERENCES content(content_id) ON DELETE CASCADE,
       ctype_id INT REFERENCES ctype(ctype_id) ON DELETE CASCADE
     )`);

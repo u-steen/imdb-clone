@@ -57,3 +57,12 @@ export const postContent = async (objectToPost) => {
 export const deleteContent = async (itemID) => {
   await db.query(`DELETE FROM content WHERE content_id = $1`, [+itemID]);
 };
+// Get User
+
+export const getUser = async (username) => {
+  const user = await db.query(`SELECT * FROM users WHERE username = $1`, [
+    username,
+  ]);
+  if (user.length === 0) return null;
+  return user;
+};
