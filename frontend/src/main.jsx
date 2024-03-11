@@ -5,14 +5,17 @@ import Home from "./pages/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
+import Container from "./pages/Container";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <Navbar />
+      <Container>
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
+      </Container>
       <Footer />
     </BrowserRouter>
   </React.StrictMode>,
