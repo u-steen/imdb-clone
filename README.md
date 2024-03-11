@@ -71,15 +71,19 @@ With this project I am looking in creating an improved version of the IMDb UI. I
     - [x] HeroBox
     - [x] What to watch + other lists
     - [ ] New Trailers
-    - [ ] Actors and other stuff
+    - [ ] People
   - [x] Footer
-  - [ ] Movie Page
+  - [ ] Auth Pages
+    - [ ] Register Page
+    - [ ] Login Page
+  - [ ] Content Page
   - [ ] Person Page
   - [ ] User Page
-  - [ ] Movie List Page (for collections)
+  - [ ] Content List Page (for collections)
+  - [ ] Responsiveness
 
 - [ ] Backend
   - [ ] WebAPI
-    - [x] Content requests
-    - [ ] People requests
+    - [x] Connection to the PostgreSQL
+    - [ ] Authentification with JWT
   - [x] Database
