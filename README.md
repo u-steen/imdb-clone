@@ -8,11 +8,15 @@ With this project I am looking in creating an improved version of the IMDb UI. I
 
 ### Main page
 
-![alt text](/docs/main_page_ss_1.png)
+![Main page Demo ScreenShot](/docs/main_page_ss_1.png)
 
 ### Mega Menu (activated by pressing the "Menu" button on the Main Page)
 
-![alt text](/docs/main_page_ss_2.png)
+![Mega Menu Demo ScreenShot](/docs/main_page_ss_2.png)
+
+### Authentication Page + Errors
+
+![Auth Page Demo ScreenShot](/docs/auth_demo.png)
 
 # Tech stack
 
