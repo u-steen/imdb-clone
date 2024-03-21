@@ -1,6 +1,6 @@
 import { createHash, randomBytes } from "node:crypto";
 import { Router } from "express";
-import { registerUser, loginUser, getUser } from "../db_queries.js";
+import { registerUser, getUser } from "../db_queries.js";
 
 const router = Router();
 

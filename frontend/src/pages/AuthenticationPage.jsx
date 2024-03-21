@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { MdCallMissedOutgoing, MdErrorOutline } from "react-icons/md";
+import { MdErrorOutline } from "react-icons/md";
 
 const AuthenticationPage = () => {
   const emptyRegisterForm = {
@@ -14,7 +14,7 @@ const AuthenticationPage = () => {
     email: "",
     password: "",
     passwordConfirm: "",
-    agree: false,
+    agree: "",
   };
   const [registerData, setRegisterData] = useState(emptyRegisterForm);
   const [errors, setErrors] = useState(emptyErrors);
@@ -23,20 +23,20 @@ const AuthenticationPage = () => {
     const { name, value, type, checked } = e.target;
     const newVal = type === "checkbox" ? checked : value;
     setRegisterData({ ...registerData, [name]: newVal });
+    console.log(name, newVal);
   };
 
   const handleErrors = (name, value) => {
     setErrors((prevError) => ({ ...prevError, [name]: value }));
   };
 
-  useEffect(() => {
-    if (Object.values(errors).every((err) => err === "")) {
-      setRegisterData(emptyRegisterForm);
-      console.log(errors);
-    }
-  }, [errors]);
+  // useEffect(() => {
+  //   if (Object.values(errors).every((err) => err === "")) {
+  //     console.log(errors);
+  //   }
+  // }, [errors]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors(emptyErrors);
 
@@ -58,12 +58,14 @@ const AuthenticationPage = () => {
     // Password
     if (password.value.length < 5) {
       handleErrors("password", "Password must be at least 5 characters long");
-    } else if (!/^[a-zA-Z0-9_!@#$%^&*()-+=<>?]$/.test(password.value)) {
-      handleErrors(
-        "password",
-        "Password can only contain letters, numbers and symbols",
-      );
+      // TODO: regex for passwords
     }
+    // else if (!/^[*]$/.test(password.value)) {
+    //   handleErrors(
+    //     "password",
+    //     "Password can only contain letters, numbers and symbols",
+    //   );
+    // }
     // Password Confirm
     if (passwordConfirm.value.length < 5) {
       handleErrors(
@@ -74,9 +76,34 @@ const AuthenticationPage = () => {
       handleErrors("passwordConfirm", "Passwords don't match");
     }
     // Agree checkbox
-    console.log(agree.value);
-    if (agree.value === "false") {
+    console.log("agree:", agree.checked);
+    if (agree.checked === false) {
       handleErrors("agree", "You must agree in order to continue");
+    }
+    if (
+      errors.username !== "" ||
+      errors.email !== "" ||
+      errors.password !== "" ||
+      errors.passwordConfirm !== "" ||
+      errors.agree !== ""
+    ) {
+      console.log("Errors");
+      return;
+    }
+    console.log("All values are true! Sending...");
+    try {
+      const res = await fetch("http://localhost:7001/auth/register", {
+        method: "POST",
+        body: JSON.stringify({
+          username: username.value,
+          email: email.value,
+          password: password.value,
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
+      setRegisterData(emptyRegisterForm);
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -156,7 +183,7 @@ const AuthenticationPage = () => {
                 )}
               </div>
               {/* Checkbox */}
-              <div className="mt-2 ">
+              <div className="mt-2">
                 <div className="flex">
                   <input
                     type="checkbox"
@@ -164,7 +191,7 @@ const AuthenticationPage = () => {
                     id="agreeCheck"
                     className="mr-2 w-[1.15rem] pl-2 accent-custom-darkgray"
                     onChange={handleRegisterChange}
-                    value={registerData.agree}
+                    checked={registerData.agree}
                   />
                   <label htmlFor="agreeCheck">I agree with something</label>
                 </div>
