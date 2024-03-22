@@ -77,9 +77,7 @@ With this project I am looking in creating an improved version of the IMDb UI. I
     - [ ] New Trailers
     - [ ] People
   - [x] Footer
-  - [ ] Auth Pages
-    - [ ] Register Page
-    - [ ] Login Page
+  - [x] Auth Page
   - [ ] Content Page
   - [ ] Person Page
   - [ ] User Page
@@ -90,4 +88,6 @@ With this project I am looking in creating an improved version of the IMDb UI. I
   - [ ] WebAPI
     - [x] Connection to the PostgreSQL
     - [ ] Authentification with JWT
+      - [x] Register
+      - [ ] Login
   - [x] Database

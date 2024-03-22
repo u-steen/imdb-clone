@@ -76,7 +76,6 @@ const AuthenticationPage = () => {
       handleErrors("passwordConfirm", "Passwords don't match");
     }
     // Agree checkbox
-    console.log("agree:", agree.checked);
     if (agree.checked === false) {
       handleErrors("agree", "You must agree in order to continue");
     }
@@ -100,6 +99,7 @@ const AuthenticationPage = () => {
           password: password.value,
         }),
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
       });
       setRegisterData(emptyRegisterForm);
     } catch (err) {

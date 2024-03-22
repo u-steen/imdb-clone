@@ -1,8 +1,21 @@
 import { createHash, randomBytes } from "node:crypto";
 import { Router } from "express";
 import { registerUser, getUser } from "../db_queries.js";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const router = Router();
+
+const jwt_secret = process.env.JWT_SECRET;
+
+const maxAge = 3 * 24 * 60 * 60; // 3 days (in seconds)
+const createToken = (username) => {
+  return jwt.sign({ username }, jwt_secret, {
+    expiresIn: maxAge,
+  });
+};
 
 router.get("/user/:username", async (req, res) => {
   const { username } = req.params;
@@ -31,7 +44,14 @@ router.post("/auth/register", async (req, res) => {
   hashAlg.update(saltedPass);
   const password_hash = hashAlg.digest("hex");
   registerUser({ username, email, birth_date, password_hash, salt, bio });
-  res.sendStatus(200);
+
+  const token = createToken(username);
+  res.cookie("jwt", token, {
+    httpOnly: true,
+    maxAge: maxAge * 1000,
+    sameSite: "none",
+  });
+  res.status(201).json({ username });
 });
 
 router.post("/auth/login", async (req, res) => {
@@ -53,6 +73,7 @@ router.post("/auth/login", async (req, res) => {
     // Aici suntem logati
     return;
   }
+
   res.sendStatus(401);
   // console.log("Provided pass afteer hash\t", providedHashedPass);
   // console.log("Passowrd from db\t\t", foundUser[0].password_hash);
